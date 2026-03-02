@@ -363,11 +363,6 @@ class ProductListRepository extends AbstractRepository implements ProductListRep
             ->toArray();
     }
 
-    /**
-     * @param int $idProductList
-     *
-     * @return \Generated\Shared\Transfer\ProductListTransfer
-     */
     public function getProductListById(int $idProductList): ProductListTransfer
     {
         $productListTransfer = new ProductListTransfer();
@@ -385,11 +380,6 @@ class ProductListRepository extends AbstractRepository implements ProductListRep
             ->mapEntityTransferToProductListTransfer($productListEntityTransfer, $productListTransfer);
     }
 
-    /**
-     * @param string $key
-     *
-     * @return bool
-     */
     public function hasKey(string $key): bool
     {
         return $this->getFactory()
@@ -614,11 +604,6 @@ class ProductListRepository extends AbstractRepository implements ProductListRep
             ->toArray();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListCriteriaTransfer $productListCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListCollectionTransfer
-     */
     public function getProductListCollection(ProductListCriteriaTransfer $productListCriteriaTransfer): ProductListCollectionTransfer
     {
         $productListCollectionTransfer = new ProductListCollectionTransfer();
@@ -638,12 +623,6 @@ class ProductListRepository extends AbstractRepository implements ProductListRep
             );
     }
 
-    /**
-     * @param \Orm\Zed\ProductList\Persistence\SpyProductListQuery $productListQuery
-     * @param \Generated\Shared\Transfer\PaginationTransfer $paginationTransfer
-     *
-     * @return \Orm\Zed\ProductList\Persistence\SpyProductListQuery
-     */
     protected function applyProductListPagination(
         SpyProductListQuery $productListQuery,
         PaginationTransfer $paginationTransfer

@@ -27,18 +27,8 @@ interface ProductListRepositoryInterface
      */
     public function getRelatedProductConcreteIdsByIdProductList(int $idProductList): array;
 
-    /**
-     * @param int $idProductList
-     *
-     * @return \Generated\Shared\Transfer\ProductListTransfer
-     */
     public function getProductListById(int $idProductList): ProductListTransfer;
 
-    /**
-     * @param string $key
-     *
-     * @return bool
-     */
     public function hasKey(string $key): bool;
 
     /**
@@ -152,10 +142,5 @@ interface ProductListRepositoryInterface
      */
     public function getProductConcreteIdsRelatedToProductListsCategories(array $productListIds): array;
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListCriteriaTransfer $productListCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListCollectionTransfer
-     */
     public function getProductListCollection(ProductListCriteriaTransfer $productListCriteriaTransfer): ProductListCollectionTransfer;
 }

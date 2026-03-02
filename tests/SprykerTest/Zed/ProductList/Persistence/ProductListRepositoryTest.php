@@ -51,9 +51,6 @@ class ProductListRepositoryTest extends Unit
      */
     protected $productListProductConcreteRelation;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -69,9 +66,6 @@ class ProductListRepositoryTest extends Unit
             ]);
     }
 
-    /**
-     * @return void
-     */
     public function testGetProductListIdsByProductIdsReturnsCorrectData(): void
     {
         //Assert
@@ -96,9 +90,6 @@ class ProductListRepositoryTest extends Unit
         $this->assertContains($productConcreteIds[1], $resultProductConcreteIds);
     }
 
-    /**
-     * @return void
-     */
     public function testGetProductConcreteProductListIdsForTypeReturnsCorrectProductListId(): void
     {
         //Assert
@@ -117,9 +108,6 @@ class ProductListRepositoryTest extends Unit
         $this->assertEquals($productListTransfer->getIdProductList(), $result[0]);
     }
 
-    /**
-     * @return void
-     */
     public function testGetProductBlacklistIdsByIdProductAbstractReturnsCorrectProductListId(): void
     {
         //Assert
@@ -138,9 +126,6 @@ class ProductListRepositoryTest extends Unit
         $this->assertEquals($productListTransfer->getIdProductList(), $result[0]);
     }
 
-    /**
-     * @return void
-     */
     public function testGetAbstractProductWhitelistIdsReturnsCorrectProductListId(): void
     {
         //Assert
@@ -159,9 +144,6 @@ class ProductListRepositoryTest extends Unit
         $this->assertEquals($productListTransfer->getIdProductList(), $result[0]);
     }
 
-    /**
-     * @return void
-     */
     public function testGetProductListByProductAbstractIdsThroughCategoryReturnsCorrectProductAbstractIds(): void
     {
         //Assert
@@ -195,9 +177,6 @@ class ProductListRepositoryTest extends Unit
         $this->assertContains($productAbstractIds[1], $resultProductAbstractIds);
     }
 
-    /**
-     * @return void
-     */
     public function testGetProductBlacklistsByProductAbstractIdsReturnsCorrectData(): void
     {
         //Assert
@@ -224,9 +203,6 @@ class ProductListRepositoryTest extends Unit
         $this->assertContains($productAbstractIds[1], $resultProductAbstractIds);
     }
 
-    /**
-     * @return void
-     */
     public function testGetProductWhitelistsByProductAbstractIdsReturnsCorrectData(): void
     {
         //Assert

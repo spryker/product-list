@@ -48,11 +48,6 @@ class ProductListDependencyProvider extends AbstractBundleDependencyProvider
      */
     public const PLUGINS_PRODUCT_LIST_DELETE_PRE_CHECK = 'PLUGINS_PRODUCT_LIST_DELETE_PRE_CHECK';
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function providePersistenceLayerDependencies(Container $container): Container
     {
         $container = parent::providePersistenceLayerDependencies($container);
@@ -60,11 +55,6 @@ class ProductListDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function provideBusinessLayerDependencies(Container $container): Container
     {
         $container = parent::provideBusinessLayerDependencies($container);
@@ -78,11 +68,6 @@ class ProductListDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addUtilTextService(Container $container): Container
     {
         $container->set(static::SERVICE_UTIL_TEXT, function (Container $container) {
@@ -92,11 +77,6 @@ class ProductListDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addMessengerFacade(Container $container): Container
     {
         $container->set(static::FACADE_MESSENGER, function (Container $container) {
@@ -106,11 +86,6 @@ class ProductListDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addProductFacade(Container $container): Container
     {
         $container->set(static::FACADE_PRODUCT, function (Container $container) {
@@ -120,11 +95,6 @@ class ProductListDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addProductListPreCreatePlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_PRODUCT_LIST_PRE_CREATE, function (Container $container) {
@@ -134,11 +104,6 @@ class ProductListDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addProductListPreUpdatePlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_PRODUCT_LIST_PRE_UPDATE, function (Container $container) {
@@ -148,11 +113,6 @@ class ProductListDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addProductListDeletePreCheckPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_PRODUCT_LIST_DELETE_PRE_CHECK, function (Container $container) {

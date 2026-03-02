@@ -17,20 +17,12 @@ class ProductListProductConcreteRelationReader implements ProductListProductConc
      */
     protected $productListRepository;
 
-    /**
-     * @param \Spryker\Zed\ProductList\Persistence\ProductListRepositoryInterface $productListRepository
-     */
     public function __construct(
         ProductListRepositoryInterface $productListRepository
     ) {
         $this->productListRepository = $productListRepository;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListProductConcreteRelationTransfer $productListProductConcreteRelationTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListProductConcreteRelationTransfer
-     */
     public function getProductListProductConcreteRelation(
         ProductListProductConcreteRelationTransfer $productListProductConcreteRelationTransfer
     ): ProductListProductConcreteRelationTransfer {

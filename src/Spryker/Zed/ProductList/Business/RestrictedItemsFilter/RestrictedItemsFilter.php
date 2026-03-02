@@ -35,10 +35,6 @@ class RestrictedItemsFilter implements RestrictedItemsFilterInterface
      */
     protected $productListRestrictionFilter;
 
-    /**
-     * @param \Spryker\Zed\ProductList\Dependency\Facade\ProductListToMessengerFacadeInterface $messengerFacade
-     * @param \Spryker\Zed\ProductList\Business\ProductListRestrictionFilter\ProductListRestrictionFilterInterface $productListRestrictionFilter
-     */
     public function __construct(
         ProductListToMessengerFacadeInterface $messengerFacade,
         ProductListRestrictionFilterInterface $productListRestrictionFilter
@@ -47,11 +43,6 @@ class RestrictedItemsFilter implements RestrictedItemsFilterInterface
         $this->productListRestrictionFilter = $productListRestrictionFilter;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     public function filterRestrictedItems(QuoteTransfer $quoteTransfer): QuoteTransfer
     {
         $customerTransfer = $quoteTransfer->getCustomer();
@@ -107,11 +98,6 @@ class RestrictedItemsFilter implements RestrictedItemsFilterInterface
         $quoteTransfer->getItems()->exchangeArray($allowedItems);
     }
 
-    /**
-     * @param string $sku
-     *
-     * @return void
-     */
     protected function addFilterMessage(string $sku): void
     {
         $messageTransfer = (new MessageTransfer())

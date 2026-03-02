@@ -18,11 +18,6 @@ use Spryker\Zed\Kernel\Persistence\AbstractEntityManager;
  */
 class ProductListEntityManager extends AbstractEntityManager implements ProductListEntityManagerInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ProductListTransfer $productListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListTransfer
-     */
     public function createProductList(ProductListTransfer $productListTransfer): ProductListTransfer
     {
         $productListTransfer = $this->saveProductListEntity(new SpyProductList(), $productListTransfer);
@@ -30,11 +25,6 @@ class ProductListEntityManager extends AbstractEntityManager implements ProductL
         return $productListTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListTransfer $productListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListTransfer
-     */
     public function updateProductList(ProductListTransfer $productListTransfer): ProductListTransfer
     {
         $productListTransfer->requireIdProductList();
@@ -48,12 +38,6 @@ class ProductListEntityManager extends AbstractEntityManager implements ProductL
         return $productListTransfer;
     }
 
-    /**
-     * @param \Orm\Zed\ProductList\Persistence\SpyProductList $productListEntity
-     * @param \Generated\Shared\Transfer\ProductListTransfer $productListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListTransfer
-     */
     protected function saveProductListEntity(SpyProductList $productListEntity, ProductListTransfer $productListTransfer): ProductListTransfer
     {
         $productListEntity = $this->getFactory()
@@ -71,11 +55,6 @@ class ProductListEntityManager extends AbstractEntityManager implements ProductL
         return $productListTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListTransfer $productListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListTransfer
-     */
     protected function saveProductListRelation(ProductListTransfer $productListTransfer): ProductListTransfer
     {
         $productListCategoryRelationTransfer = $productListTransfer->getProductListCategoryRelation();
@@ -94,11 +73,6 @@ class ProductListEntityManager extends AbstractEntityManager implements ProductL
         return $productListTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListTransfer $productListTransfer
-     *
-     * @return void
-     */
     public function deleteProductList(ProductListTransfer $productListTransfer): void
     {
         $this->getFactory()
@@ -107,11 +81,6 @@ class ProductListEntityManager extends AbstractEntityManager implements ProductL
             ->delete();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListTransfer $productListTransfer
-     *
-     * @return void
-     */
     public function deleteProductListProductRelations(ProductListTransfer $productListTransfer): void
     {
         $productListConcreteProductEntities = $this->getFactory()
@@ -124,11 +93,6 @@ class ProductListEntityManager extends AbstractEntityManager implements ProductL
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListTransfer $productListTransfer
-     *
-     * @return void
-     */
     public function deleteProductListCategoryRelations(ProductListTransfer $productListTransfer): void
     {
         $productListCategoryEntities = $this->getFactory()

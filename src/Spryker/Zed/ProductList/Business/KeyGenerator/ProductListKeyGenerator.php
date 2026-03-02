@@ -27,10 +27,6 @@ class ProductListKeyGenerator implements ProductListKeyGeneratorInterface
      */
     protected $utilTextService;
 
-    /**
-     * @param \Spryker\Zed\ProductList\Persistence\ProductListRepositoryInterface $productListRepository
-     * @param \Spryker\Zed\ProductList\Dependency\Service\ProductListToUtilTextServiceInterface $utilTextService
-     */
     public function __construct(
         ProductListRepositoryInterface $productListRepository,
         ProductListToUtilTextServiceInterface $utilTextService
@@ -39,11 +35,6 @@ class ProductListKeyGenerator implements ProductListKeyGeneratorInterface
         $this->utilTextService = $utilTextService;
     }
 
-    /**
-     * @param string $name
-     *
-     * @return string
-     */
     public function generateProductListKey(string $name): string
     {
         $index = 0;

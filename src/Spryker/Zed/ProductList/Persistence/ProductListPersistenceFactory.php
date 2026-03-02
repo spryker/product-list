@@ -20,33 +20,21 @@ use Spryker\Zed\ProductList\Persistence\Mapper\ProductListMapper;
  */
 class ProductListPersistenceFactory extends AbstractPersistenceFactory
 {
-    /**
-     * @return \Orm\Zed\ProductList\Persistence\SpyProductListQuery
-     */
     public function createProductListQuery(): SpyProductListQuery
     {
         return SpyProductListQuery::create();
     }
 
-    /**
-     * @return \Orm\Zed\ProductList\Persistence\SpyProductListCategoryQuery
-     */
     public function createProductListCategoryQuery(): SpyProductListCategoryQuery
     {
         return SpyProductListCategoryQuery::create();
     }
 
-    /**
-     * @return \Orm\Zed\ProductList\Persistence\SpyProductListProductConcreteQuery
-     */
     public function createProductListProductConcreteQuery(): SpyProductListProductConcreteQuery
     {
         return SpyProductListProductConcreteQuery::create();
     }
 
-    /**
-     * @return \Spryker\Zed\ProductList\Persistence\Mapper\ProductListMapper
-     */
     public function createProductListMapper(): ProductListMapper
     {
         return new ProductListMapper();

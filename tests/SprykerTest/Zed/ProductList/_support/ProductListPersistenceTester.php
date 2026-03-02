@@ -31,12 +31,6 @@ class ProductListPersistenceTester extends Actor
 {
     use _generated\ProductListPersistenceTesterActions;
 
-    /**
-     * @param int $idProductList
-     * @param int $idCategory
-     *
-     * @return \Generated\Shared\Transfer\ProductListCategoryRelationTransfer
-     */
     public function haveProductListCategory(int $idProductList, int $idCategory): ProductListCategoryRelationTransfer
     {
         $productListProductCategoryEntity = SpyProductListCategoryQuery::create()

@@ -35,9 +35,6 @@ class ProductListRestrictionFilterTest extends Unit
      */
     protected $productListReaderMock;
 
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();
@@ -45,9 +42,6 @@ class ProductListRestrictionFilterTest extends Unit
         $this->productListReaderMock = $this->createProductListReaderMock();
     }
 
-    /**
-     * @return void
-     */
     public function testFilterRestrictedProductConcreteSkusWithSkuInBlacklist(): void
     {
         // Assign
@@ -69,9 +63,6 @@ class ProductListRestrictionFilterTest extends Unit
         $this->assertSame($filteredSkus, $expectedSku);
     }
 
-    /**
-     * @return void
-     */
     public function testFilterRestrictedProductConcreteSkusWithSkuInWhitelist(): void
     {
         // Assign
@@ -93,9 +84,6 @@ class ProductListRestrictionFilterTest extends Unit
         $this->assertSame($filteredSkus, $expectedSku);
     }
 
-    /**
-     * @return void
-     */
     public function testFilterRestrictedProductConcreteSkusWithSkuInBlacklistAndWhitelist(): void
     {
         // Assign
@@ -121,9 +109,6 @@ class ProductListRestrictionFilterTest extends Unit
         $this->assertSame(array_values($filteredSkus), $expectedSku);
     }
 
-    /**
-     * @return void
-     */
     public function testFilterRestrictedProductConcreteSkusWithSkuInBlacklistWhileDuplicatedInWhitelistShouldAlsoBeBlacklisted(): void
     {
         // Assign
@@ -149,9 +134,6 @@ class ProductListRestrictionFilterTest extends Unit
         $this->assertSame(array_values($filteredSkus), $expectedSku);
     }
 
-    /**
-     * @return void
-     */
     public function testFilterRestrictedProductConcreteSkusWithEmptyWhitelist(): void
     {
         // Assign
@@ -173,9 +155,6 @@ class ProductListRestrictionFilterTest extends Unit
         $this->assertSame($filteredSkus, $expectedSku);
     }
 
-    /**
-     * @return \Spryker\Zed\ProductList\Business\ProductListRestrictionFilter\ProductListRestrictionFilterInterface
-     */
     protected function createProductListRestrictionFilter(): ProductListRestrictionFilterInterface
     {
         return new ProductListRestrictionFilter(

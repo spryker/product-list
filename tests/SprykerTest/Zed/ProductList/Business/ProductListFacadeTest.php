@@ -32,9 +32,6 @@ class ProductListFacadeTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testSaveProductListCreatesProductList(): void
     {
         // Assign
@@ -47,9 +44,6 @@ class ProductListFacadeTest extends Unit
         $this->assertNotNull($productListTransfer->getIdProductList());
     }
 
-    /**
-     * @return void
-     */
     public function testSaveProductListCreatesProductListCategoryRelations(): void
     {
         // Assign
@@ -65,9 +59,6 @@ class ProductListFacadeTest extends Unit
         $this->assertCount(1, $productListTransfer->getProductListCategoryRelation()->getCategoryIds());
     }
 
-    /**
-     * @return void
-     */
     public function testSaveProductListCreatesProductListProductConcreteRelations(): void
     {
         // Assign
@@ -84,9 +75,6 @@ class ProductListFacadeTest extends Unit
         $this->assertCount(1, $productListTransfer->getProductListProductConcreteRelation()->getProductIds());
     }
 
-    /**
-     * @return void
-     */
     public function testSaveProductListUpdatesProductList(): void
     {
         // Assign
@@ -100,9 +88,6 @@ class ProductListFacadeTest extends Unit
         $this->assertSame('TEST', $savedProductListTransfer->getTitle());
     }
 
-    /**
-     * @return void
-     */
     public function testCreateProductListCreatesProductList(): void
     {
         //Assign
@@ -116,9 +101,6 @@ class ProductListFacadeTest extends Unit
         $this->assertNotNull($productListResponseTransfer->getProductList()->getIdProductList());
     }
 
-    /**
-     * @return void
-     */
     public function testCreateProductListIsSuccessful(): void
     {
         //Assign
@@ -131,9 +113,6 @@ class ProductListFacadeTest extends Unit
         $this->assertTrue($productListResponseTransfer->getIsSuccessful());
     }
 
-    /**
-     * @return void
-     */
     public function testCreateProductListCreatesProductListCategoryRelations(): void
     {
         //Assign
@@ -150,9 +129,6 @@ class ProductListFacadeTest extends Unit
         $this->assertCount(1, $productListTransfer->getProductListCategoryRelation()->getCategoryIds());
     }
 
-    /**
-     * @return void
-     */
     public function testCreateProductListCreatesProductListProductConcreteRelations(): void
     {
         //Assign
@@ -170,9 +146,6 @@ class ProductListFacadeTest extends Unit
         $this->assertCount(1, $productListTransfer->getProductListProductConcreteRelation()->getProductIds());
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateProductListUpdatesProductList(): void
     {
         //Assign
@@ -186,9 +159,6 @@ class ProductListFacadeTest extends Unit
         $this->assertSame('TEST', $productListResponseTransfer->getProductList()->getTitle());
     }
 
-    /**
-     * @return void
-     */
     public function testDeleteProductListDeletesProductList(): void
     {
         // Assign
@@ -203,9 +173,6 @@ class ProductListFacadeTest extends Unit
         $this->getFacade()->createProductList($productListTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testRemoveProductListDeletesProductList(): void
     {
         // Assign
@@ -220,9 +187,6 @@ class ProductListFacadeTest extends Unit
         $this->assertNull($productListTransfer->getIdProductList());
     }
 
-    /**
-     * @return void
-     */
     public function testGetProductConcreteIdsByProductListIds(): void
     {
         // Arrange
@@ -242,9 +206,6 @@ class ProductListFacadeTest extends Unit
         $this->assertEquals([$productTransfer->getIdProductConcrete()], $productConcreteIds);
     }
 
-    /**
-     * @return void
-     */
     public function testGetProductListCollectionReturnsCorrectProductListsWithoutPagination(): void
     {
         // Arrange
@@ -273,9 +234,6 @@ class ProductListFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testGetProductListCollectionReturnsPaginatedProductListsWithLimitAndOffset(): void
     {
         // Arrange
@@ -305,9 +263,6 @@ class ProductListFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testGetProductAbstractIdsByProductListIdsShouldNotReturnNullIdsWhenCategoryHasNoProducts(): void
     {
         // Arrange

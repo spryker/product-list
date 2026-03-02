@@ -11,10 +11,5 @@ use Generated\Shared\Transfer\ProductListTransfer;
 
 interface ProductListPostSaverInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ProductListTransfer $productListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListTransfer
-     */
     public function postSave(ProductListTransfer $productListTransfer): ProductListTransfer;
 }

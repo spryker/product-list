@@ -16,9 +16,6 @@ class ProductListRestrictionFilter implements ProductListRestrictionFilterInterf
      */
     protected $productListReader;
 
-    /**
-     * @param \Spryker\Zed\ProductList\Business\ProductList\ProductListReaderInterface $productListReader
-     */
     public function __construct(
         ProductListReaderInterface $productListReader
     ) {

@@ -92,11 +92,6 @@ class ProductListWriter implements ProductListWriterInterface
         });
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListTransfer $productListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListResponseTransfer
-     */
     public function createProductList(ProductListTransfer $productListTransfer): ProductListResponseTransfer
     {
         return $this->getTransactionHandler()->handleTransaction(function () use ($productListTransfer) {
@@ -104,11 +99,6 @@ class ProductListWriter implements ProductListWriterInterface
         });
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListTransfer $productListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListResponseTransfer
-     */
     public function updateProductList(ProductListTransfer $productListTransfer): ProductListResponseTransfer
     {
         return $this->getTransactionHandler()->handleTransaction(function () use ($productListTransfer) {
@@ -116,11 +106,6 @@ class ProductListWriter implements ProductListWriterInterface
         });
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListTransfer $productListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListResponseTransfer
-     */
     public function deleteProductList(ProductListTransfer $productListTransfer): ProductListResponseTransfer
     {
         $productListResponseTransfer = (new ProductListResponseTransfer())
@@ -138,11 +123,6 @@ class ProductListWriter implements ProductListWriterInterface
         });
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListTransfer $productListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListTransfer
-     */
     protected function executeSaveProductListTransaction(
         ProductListTransfer $productListTransfer
     ): ProductListTransfer {
@@ -153,11 +133,6 @@ class ProductListWriter implements ProductListWriterInterface
         return $this->executeCreateProductListTransaction($productListTransfer)->getProductList();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListTransfer $productListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListResponseTransfer
-     */
     protected function executeCreateProductListTransaction(
         ProductListTransfer $productListTransfer
     ): ProductListResponseTransfer {
@@ -174,11 +149,6 @@ class ProductListWriter implements ProductListWriterInterface
             ->setIsSuccessful(true);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListTransfer $productListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListResponseTransfer
-     */
     protected function executeUpdateProductListTransaction(
         ProductListTransfer $productListTransfer
     ): ProductListResponseTransfer {
@@ -193,11 +163,6 @@ class ProductListWriter implements ProductListWriterInterface
             ->setIsSuccessful(true);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListTransfer $productListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListTransfer
-     */
     protected function executeProductListPostSavePlugins(ProductListTransfer $productListTransfer): ProductListTransfer
     {
         foreach ($this->productListPostSavers as $productListPostSaver) {
@@ -207,12 +172,6 @@ class ProductListWriter implements ProductListWriterInterface
         return $productListTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListTransfer $productListTransfer
-     * @param \Generated\Shared\Transfer\ProductListResponseTransfer $productListResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListResponseTransfer
-     */
     protected function executeDeleteProductListTransaction(
         ProductListTransfer $productListTransfer,
         ProductListResponseTransfer $productListResponseTransfer
@@ -228,11 +187,6 @@ class ProductListWriter implements ProductListWriterInterface
         return $productListResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListResponseTransfer $productListResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListResponseTransfer
-     */
     protected function executeProductListPreCreatePlugins(ProductListResponseTransfer $productListResponseTransfer): ProductListResponseTransfer
     {
         foreach ($this->productListPreCreatePlugins as $productListPreCreatePlugin) {
@@ -244,11 +198,6 @@ class ProductListWriter implements ProductListWriterInterface
         return $productListResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListResponseTransfer $productListResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListResponseTransfer
-     */
     protected function executeProductListPreUpdatePlugins(ProductListResponseTransfer $productListResponseTransfer): ProductListResponseTransfer
     {
         foreach ($this->productListPreUpdatePlugins as $productListPreUpdatePlugin) {
@@ -260,11 +209,6 @@ class ProductListWriter implements ProductListWriterInterface
         return $productListResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListResponseTransfer $productListResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListResponseTransfer
-     */
     protected function executeProductListDeletePreCheckPlugins(ProductListResponseTransfer $productListResponseTransfer): ProductListResponseTransfer
     {
         foreach ($this->productListDeletePreCheckPlugins as $productListDeletePreCheckPlugin) {
@@ -275,12 +219,6 @@ class ProductListWriter implements ProductListWriterInterface
         return $productListResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListResponseTransfer $productListResponseTransfer
-     * @param \Generated\Shared\Transfer\ProductListResponseTransfer $resultProductListResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListResponseTransfer
-     */
     protected function mergeProductListResponseMessages(
         ProductListResponseTransfer $productListResponseTransfer,
         ProductListResponseTransfer $resultProductListResponseTransfer
@@ -294,12 +232,6 @@ class ProductListWriter implements ProductListWriterInterface
             ->setMessages(new ArrayObject($messageTransfers));
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListResponseTransfer $productListResponseTransfer
-     * @param \Generated\Shared\Transfer\ProductListResponseTransfer $resultProductListResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListResponseTransfer
-     */
     protected function mergeProductListResponseTransfers(
         ProductListResponseTransfer $productListResponseTransfer,
         ProductListResponseTransfer $resultProductListResponseTransfer

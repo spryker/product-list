@@ -11,11 +11,6 @@ use Generated\Shared\Transfer\ProductListProductConcreteRelationTransfer;
 
 interface ProductListProductConcreteRelationWriterInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ProductListProductConcreteRelationTransfer $productListProductConcreteRelationTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListProductConcreteRelationTransfer
-     */
     public function saveProductListProductConcreteRelation(
         ProductListProductConcreteRelationTransfer $productListProductConcreteRelationTransfer
     ): ProductListProductConcreteRelationTransfer;

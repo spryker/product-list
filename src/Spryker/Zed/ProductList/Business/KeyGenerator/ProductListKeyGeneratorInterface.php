@@ -9,10 +9,5 @@ namespace Spryker\Zed\ProductList\Business\KeyGenerator;
 
 interface ProductListKeyGeneratorInterface
 {
-    /**
-     * @param string $name
-     *
-     * @return string
-     */
     public function generateProductListKey(string $name): string;
 }

@@ -25,10 +25,6 @@ class ProductListProductConcreteRelationWriter implements ProductListProductConc
      */
     protected $productListProductConcreteRelationReader;
 
-    /**
-     * @param \Spryker\Zed\ProductList\Persistence\ProductListEntityManagerInterface $productListEntityManager
-     * @param \Spryker\Zed\ProductList\Business\ProductListProductConcreteRelation\ProductListProductConcreteRelationReaderInterface $productListProductConcreteRelationReader
-     */
     public function __construct(
         ProductListEntityManagerInterface $productListEntityManager,
         ProductListProductConcreteRelationReaderInterface $productListProductConcreteRelationReader
@@ -37,11 +33,6 @@ class ProductListProductConcreteRelationWriter implements ProductListProductConc
         $this->productListProductConcreteRelationReader = $productListProductConcreteRelationReader;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListProductConcreteRelationTransfer $productListProductConcreteRelationTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListProductConcreteRelationTransfer
-     */
     public function saveProductListProductConcreteRelation(
         ProductListProductConcreteRelationTransfer $productListProductConcreteRelationTransfer
     ): ProductListProductConcreteRelationTransfer {
@@ -50,11 +41,6 @@ class ProductListProductConcreteRelationWriter implements ProductListProductConc
         });
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListProductConcreteRelationTransfer $productListProductConcreteRelationTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListProductConcreteRelationTransfer
-     */
     protected function executeSaveProductListProductConcreteRelationTransaction(
         ProductListProductConcreteRelationTransfer $productListProductConcreteRelationTransfer
     ): ProductListProductConcreteRelationTransfer {
@@ -75,11 +61,6 @@ class ProductListProductConcreteRelationWriter implements ProductListProductConc
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListProductConcreteRelationTransfer $productListProductConcreteRelationTransfer
-     *
-     * @return array
-     */
     protected function getRelatedProductConcreteIds(
         ProductListProductConcreteRelationTransfer $productListProductConcreteRelationTransfer
     ): array {
@@ -92,11 +73,6 @@ class ProductListProductConcreteRelationWriter implements ProductListProductConc
         return $currentProductListProductConcreteRelationTransfer->getProductIds();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListProductConcreteRelationTransfer $productListProductConcreteRelationTransfer
-     *
-     * @return array
-     */
     protected function getRequestedProductConcreteIds(
         ProductListProductConcreteRelationTransfer $productListProductConcreteRelationTransfer
     ): array {

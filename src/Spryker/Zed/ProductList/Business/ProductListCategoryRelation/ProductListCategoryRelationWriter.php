@@ -25,10 +25,6 @@ class ProductListCategoryRelationWriter implements ProductListCategoryRelationWr
      */
     protected $productListCategoryRelationReader;
 
-    /**
-     * @param \Spryker\Zed\ProductList\Persistence\ProductListEntityManagerInterface $productListEntityManager
-     * @param \Spryker\Zed\ProductList\Business\ProductListCategoryRelation\ProductListCategoryRelationReaderInterface $productListCategoryRelationReader
-     */
     public function __construct(
         ProductListEntityManagerInterface $productListEntityManager,
         ProductListCategoryRelationReaderInterface $productListCategoryRelationReader
@@ -37,11 +33,6 @@ class ProductListCategoryRelationWriter implements ProductListCategoryRelationWr
         $this->productListCategoryRelationReader = $productListCategoryRelationReader;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListCategoryRelationTransfer $productListCategoryRelationTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListCategoryRelationTransfer
-     */
     public function saveProductListCategoryRelation(
         ProductListCategoryRelationTransfer $productListCategoryRelationTransfer
     ): ProductListCategoryRelationTransfer {
@@ -50,11 +41,6 @@ class ProductListCategoryRelationWriter implements ProductListCategoryRelationWr
         });
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListCategoryRelationTransfer $productListCategoryRelationTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListCategoryRelationTransfer
-     */
     protected function executeSaveProductListCategoryRelationTransaction(
         ProductListCategoryRelationTransfer $productListCategoryRelationTransfer
     ): ProductListCategoryRelationTransfer {

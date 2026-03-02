@@ -11,39 +11,14 @@ use Generated\Shared\Transfer\ProductListTransfer;
 
 interface ProductListEntityManagerInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ProductListTransfer $productListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListTransfer
-     */
     public function createProductList(ProductListTransfer $productListTransfer): ProductListTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListTransfer $productListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListTransfer
-     */
     public function updateProductList(ProductListTransfer $productListTransfer): ProductListTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListTransfer $productListTransfer
-     *
-     * @return void
-     */
     public function deleteProductList(ProductListTransfer $productListTransfer): void;
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListTransfer $productListTransfer
-     *
-     * @return void
-     */
     public function deleteProductListProductRelations(ProductListTransfer $productListTransfer): void;
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListTransfer $productListTransfer
-     *
-     * @return void
-     */
     public function deleteProductListCategoryRelations(ProductListTransfer $productListTransfer): void;
 
     /**

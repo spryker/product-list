@@ -18,19 +18,11 @@ class ProductListProductConcreteRelationPostSaver implements ProductListPostSave
      */
     protected $productListProductConcreteRelationWriter;
 
-    /**
-     * @param \Spryker\Zed\ProductList\Business\ProductListProductConcreteRelation\ProductListProductConcreteRelationWriterInterface $productListProductConcreteRelationWriter
-     */
     public function __construct(ProductListProductConcreteRelationWriterInterface $productListProductConcreteRelationWriter)
     {
         $this->productListProductConcreteRelationWriter = $productListProductConcreteRelationWriter;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListTransfer $productListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListTransfer
-     */
     public function postSave(ProductListTransfer $productListTransfer): ProductListTransfer
     {
         $productListProductConcreteRelationTransfer = $productListTransfer->getProductListProductConcreteRelation();
@@ -45,12 +37,6 @@ class ProductListProductConcreteRelationPostSaver implements ProductListPostSave
         return $productListTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListTransfer $productListTransfer
-     * @param \Generated\Shared\Transfer\ProductListProductConcreteRelationTransfer $productListProductConcreteRelationTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListTransfer
-     */
     protected function saveProductListProductConcreteRelation(
         ProductListTransfer $productListTransfer,
         ProductListProductConcreteRelationTransfer $productListProductConcreteRelationTransfer

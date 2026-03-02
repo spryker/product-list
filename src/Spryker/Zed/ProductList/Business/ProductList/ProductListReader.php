@@ -40,12 +40,6 @@ class ProductListReader implements ProductListReaderInterface
      */
     protected $productFacade;
 
-    /**
-     * @param \Spryker\Zed\ProductList\Persistence\ProductListRepositoryInterface $productListRepository
-     * @param \Spryker\Zed\ProductList\Business\ProductListCategoryRelation\ProductListCategoryRelationReaderInterface $productListCategoryRelationReader
-     * @param \Spryker\Zed\ProductList\Business\ProductListProductConcreteRelation\ProductListProductConcreteRelationReaderInterface $productListProductConcreteRelationReader
-     * @param \Spryker\Zed\ProductList\Dependency\Facade\ProductListToProductFacadeInterface $productFacade
-     */
     public function __construct(
         ProductListRepositoryInterface $productListRepository,
         ProductListCategoryRelationReaderInterface $productListCategoryRelationReader,
@@ -192,11 +186,6 @@ class ProductListReader implements ProductListReaderInterface
         return $this->productListRepository->getProductConcreteSkusInWhitelists($productConcreteSkus, $whiteListIds);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListTransfer $productListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListTransfer
-     */
     public function getProductListById(ProductListTransfer $productListTransfer): ProductListTransfer
     {
         $productListTransfer->requireIdProductList();
@@ -255,13 +244,6 @@ class ProductListReader implements ProductListReaderInterface
         );
     }
 
-    /**
-     * @param array $productConcreteLists
-     * @param array $productAbstractLists
-     * @param array $concreteToAbstractMap
-     *
-     * @return array
-     */
     protected function mergeProductConcreteAndProductAbstractLists(
         array $productConcreteLists,
         array $productAbstractLists,
@@ -283,11 +265,6 @@ class ProductListReader implements ProductListReaderInterface
         return $mergedProductConcreteAndProductAbstractLists;
     }
 
-    /**
-     * @param array $productAbstractListsIds
-     *
-     * @return array
-     */
     protected function mapProductListIdsByIdProductAbstractAndType(array $productAbstractListsIds): array
     {
         $mappedProductListIds = [];
@@ -302,11 +279,6 @@ class ProductListReader implements ProductListReaderInterface
         return $mappedProductListIds;
     }
 
-    /**
-     * @param array $productConcreteListsIds
-     *
-     * @return array
-     */
     protected function mapProductListIdsByIdProductConcreteAndType(array $productConcreteListsIds): array
     {
         $mappedProductListIds = [];

@@ -30,20 +30,12 @@ class ProductListRestrictionValidator implements ProductListRestrictionValidator
      */
     protected $productListRestrictionFilter;
 
-    /**
-     * @param \Spryker\Zed\ProductList\Business\ProductListRestrictionFilter\ProductListRestrictionFilterInterface $productListRestrictionFilter
-     */
     public function __construct(
         ProductListRestrictionFilterInterface $productListRestrictionFilter
     ) {
         $this->productListRestrictionFilter = $productListRestrictionFilter;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CartChangeTransfer $cartChangeTransfer
-     *
-     * @return \Generated\Shared\Transfer\CartPreCheckResponseTransfer
-     */
     public function validateItemAddition(CartChangeTransfer $cartChangeTransfer): CartPreCheckResponseTransfer
     {
         $cartPreCheckResponseTransfer = (new CartPreCheckResponseTransfer())->setIsSuccess(true);
@@ -104,12 +96,6 @@ class ProductListRestrictionValidator implements ProductListRestrictionValidator
         }
     }
 
-    /**
-     * @param string $sku
-     * @param \Generated\Shared\Transfer\CartPreCheckResponseTransfer $cartPreCheckResponseTransfer
-     *
-     * @return void
-     */
     protected function addViolation(string $sku, CartPreCheckResponseTransfer $cartPreCheckResponseTransfer): void
     {
         $cartPreCheckResponseTransfer->setIsSuccess(false);

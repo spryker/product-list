@@ -15,12 +15,6 @@ use Propel\Runtime\Collection\ObjectCollection;
 
 class ProductListMapper
 {
-    /**
-     * @param \Generated\Shared\Transfer\ProductListTransfer $productListTransfer
-     * @param \Generated\Shared\Transfer\SpyProductListEntityTransfer $spyProductListEntityTransfer
-     *
-     * @return \Generated\Shared\Transfer\SpyProductListEntityTransfer
-     */
     public function mapProductListTransferToEntityTransfer(
         ProductListTransfer $productListTransfer,
         SpyProductListEntityTransfer $spyProductListEntityTransfer
@@ -28,12 +22,6 @@ class ProductListMapper
         return $spyProductListEntityTransfer->fromArray($productListTransfer->modifiedToArray(), true);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SpyProductListEntityTransfer $spyProductListEntityTransfer
-     * @param \Generated\Shared\Transfer\ProductListTransfer $productListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListTransfer
-     */
     public function mapEntityTransferToProductListTransfer(
         SpyProductListEntityTransfer $spyProductListEntityTransfer,
         ProductListTransfer $productListTransfer
@@ -41,12 +29,6 @@ class ProductListMapper
         return $productListTransfer->fromArray($spyProductListEntityTransfer->toArray(), true);
     }
 
-    /**
-     * @param \Orm\Zed\ProductList\Persistence\SpyProductList $spyProductListEntity
-     * @param \Generated\Shared\Transfer\ProductListTransfer $productListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListTransfer
-     */
     public function mapEntityToProductListTransfer(
         SpyProductList $spyProductListEntity,
         ProductListTransfer $productListTransfer
@@ -54,12 +36,6 @@ class ProductListMapper
         return $productListTransfer->fromArray($spyProductListEntity->toArray(), true);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListTransfer $productListTransfer
-     * @param \Orm\Zed\ProductList\Persistence\SpyProductList $spyProductListEntity
-     *
-     * @return \Orm\Zed\ProductList\Persistence\SpyProductList
-     */
     public function mapProductListTransferToEntity(
         ProductListTransfer $productListTransfer,
         SpyProductList $spyProductListEntity

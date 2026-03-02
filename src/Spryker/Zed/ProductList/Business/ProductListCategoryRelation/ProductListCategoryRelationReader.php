@@ -17,20 +17,12 @@ class ProductListCategoryRelationReader implements ProductListCategoryRelationRe
      */
     protected $productListRepository;
 
-    /**
-     * @param \Spryker\Zed\ProductList\Persistence\ProductListRepositoryInterface $productListRepository
-     */
     public function __construct(
         ProductListRepositoryInterface $productListRepository
     ) {
         $this->productListRepository = $productListRepository;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListCategoryRelationTransfer $productListCategoryRelationTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListCategoryRelationTransfer
-     */
     public function getProductListCategoryRelation(
         ProductListCategoryRelationTransfer $productListCategoryRelationTransfer
     ): ProductListCategoryRelationTransfer {

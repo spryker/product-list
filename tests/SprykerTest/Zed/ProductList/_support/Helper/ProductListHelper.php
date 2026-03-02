@@ -20,11 +20,6 @@ class ProductListHelper extends Module
     use DataCleanupHelperTrait;
     use LocatorHelperTrait;
 
-    /**
-     * @param array $seed
-     *
-     * @return \Generated\Shared\Transfer\ProductListTransfer
-     */
     public function haveProductList(array $seed = []): ProductListTransfer
     {
         $productListTransfer = (new ProductListBuilder($seed))->build();
@@ -37,12 +32,6 @@ class ProductListHelper extends Module
         return $productListResponseTransfer->getProductList();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListTransfer $productListTransfer
-     * @param \Generated\Shared\Transfer\CategoryTransfer $categoryTransfer
-     *
-     * @return void
-     */
     public function haveProductListCategory(ProductListTransfer $productListTransfer, CategoryTransfer $categoryTransfer): void
     {
         $productListCategoryEntity = new SpyProductListCategory();

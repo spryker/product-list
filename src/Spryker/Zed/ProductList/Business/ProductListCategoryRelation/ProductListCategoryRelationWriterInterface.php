@@ -11,11 +11,6 @@ use Generated\Shared\Transfer\ProductListCategoryRelationTransfer;
 
 interface ProductListCategoryRelationWriterInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ProductListCategoryRelationTransfer $productListCategoryRelationTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListCategoryRelationTransfer
-     */
     public function saveProductListCategoryRelation(
         ProductListCategoryRelationTransfer $productListCategoryRelationTransfer
     ): ProductListCategoryRelationTransfer;

@@ -18,20 +18,12 @@ class ProductListCategoryRelationPostSaver implements ProductListPostSaverInterf
      */
     protected $productListCategoryRelationWriter;
 
-    /**
-     * @param \Spryker\Zed\ProductList\Business\ProductListCategoryRelation\ProductListCategoryRelationWriterInterface $productListCategoryRelationWriter
-     */
     public function __construct(
         ProductListCategoryRelationWriterInterface $productListCategoryRelationWriter
     ) {
         $this->productListCategoryRelationWriter = $productListCategoryRelationWriter;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListTransfer $productListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListTransfer
-     */
     public function postSave(ProductListTransfer $productListTransfer): ProductListTransfer
     {
         $productListCategoryRelationTransfer = $productListTransfer->getProductListCategoryRelation();
@@ -46,12 +38,6 @@ class ProductListCategoryRelationPostSaver implements ProductListPostSaverInterf
         return $productListTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListTransfer $productListTransfer
-     * @param \Generated\Shared\Transfer\ProductListCategoryRelationTransfer $productListCategoryRelationTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListTransfer
-     */
     protected function saveProductListCategoryRelation(
         ProductListTransfer $productListTransfer,
         ProductListCategoryRelationTransfer $productListCategoryRelationTransfer
