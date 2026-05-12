@@ -91,4 +91,11 @@ interface ProductListReaderInterface
      * @return array<int>
      */
     public function getProductConcreteIdsByProductListIds(array $productListIds): array;
+
+    /**
+     * @param array<int> $productIds
+     *
+     * @return void
+     */
+    public function preloadProductListCacheByProductIds(array $productIds): void;
 }

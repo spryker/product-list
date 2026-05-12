@@ -40,6 +40,16 @@ class ProductListReader implements ProductListReaderInterface
      */
     protected $productFacade;
 
+    /**
+     * @var array<int, array<int>>
+     */
+    protected static array $productWhitelistIdsCache = [];
+
+    /**
+     * @var array<int, array<int>>
+     */
+    protected static array $productBlackListIdsCache = [];
+
     public function __construct(
         ProductListRepositoryInterface $productListRepository,
         ProductListCategoryRelationReaderInterface $productListCategoryRelationReader,
@@ -125,20 +135,24 @@ class ProductListReader implements ProductListReaderInterface
      */
     public function getProductBlacklistIdsByIdProduct(int $idProduct): array
     {
-        return array_values(
-            array_unique(
-                array_merge(
-                    $this->productListRepository->getProductConcreteProductListIdsForType(
-                        $idProduct,
-                        SpyProductListTableMap::COL_TYPE_BLACKLIST,
-                    ),
-                    $this->productListRepository->getProductConcreteProductListIdsRelatedToCategoriesForType(
-                        $idProduct,
-                        SpyProductListTableMap::COL_TYPE_BLACKLIST,
+        if (!isset(static::$productBlackListIdsCache[$idProduct])) {
+            static::$productBlackListIdsCache[$idProduct] = array_values(
+                array_unique(
+                    array_merge(
+                        $this->productListRepository->getProductConcreteProductListIdsForType(
+                            $idProduct,
+                            SpyProductListTableMap::COL_TYPE_BLACKLIST,
+                        ),
+                        $this->productListRepository->getProductConcreteProductListIdsRelatedToCategoriesForType(
+                            $idProduct,
+                            SpyProductListTableMap::COL_TYPE_BLACKLIST,
+                        ),
                     ),
                 ),
-            ),
-        );
+            );
+        }
+
+        return static::$productBlackListIdsCache[$idProduct];
     }
 
     /**
@@ -148,20 +162,24 @@ class ProductListReader implements ProductListReaderInterface
      */
     public function getProductWhitelistIdsByIdProduct(int $idProduct): array
     {
-        return array_values(
-            array_unique(
-                array_merge(
-                    $this->productListRepository->getProductConcreteProductListIdsForType(
-                        $idProduct,
-                        SpyProductListTableMap::COL_TYPE_WHITELIST,
-                    ),
-                    $this->productListRepository->getProductConcreteProductListIdsRelatedToCategoriesForType(
-                        $idProduct,
-                        SpyProductListTableMap::COL_TYPE_WHITELIST,
+        if (!isset(static::$productWhitelistIdsCache[$idProduct])) {
+            static::$productWhitelistIdsCache[$idProduct] = array_values(
+                array_unique(
+                    array_merge(
+                        $this->productListRepository->getProductConcreteProductListIdsForType(
+                            $idProduct,
+                            SpyProductListTableMap::COL_TYPE_WHITELIST,
+                        ),
+                        $this->productListRepository->getProductConcreteProductListIdsRelatedToCategoriesForType(
+                            $idProduct,
+                            SpyProductListTableMap::COL_TYPE_WHITELIST,
+                        ),
                     ),
                 ),
-            ),
-        );
+            );
+        }
+
+        return static::$productWhitelistIdsCache[$idProduct];
     }
 
     /**
@@ -242,6 +260,51 @@ class ProductListReader implements ProductListReaderInterface
                 $this->productListRepository->getProductConcreteIdsRelatedToProductListsCategories($productListIds),
             ),
         );
+    }
+
+    /**
+     * @param array<int> $productIds
+     *
+     * @return void
+     */
+    public function preloadProductListCacheByProductIds(array $productIds): void
+    {
+        $uncachedProductIds = array_values(array_filter(
+            $productIds,
+            fn (int $idProduct) => !array_key_exists($idProduct, static::$productWhitelistIdsCache),
+        ));
+
+        if (!$uncachedProductIds) {
+            return;
+        }
+
+        $whitelistDirect = $this->productListRepository->getProductConcreteProductListIdsForTypeIndexedByProductId(
+            $uncachedProductIds,
+            SpyProductListTableMap::COL_TYPE_WHITELIST,
+        );
+        $whitelistCategory = $this->productListRepository->getProductConcreteProductListIdsRelatedToCategoriesForTypeIndexedByProductId(
+            $uncachedProductIds,
+            SpyProductListTableMap::COL_TYPE_WHITELIST,
+        );
+        $blacklistDirect = $this->productListRepository->getProductConcreteProductListIdsForTypeIndexedByProductId(
+            $uncachedProductIds,
+            SpyProductListTableMap::COL_TYPE_BLACKLIST,
+        );
+        $blacklistCategory = $this->productListRepository->getProductConcreteProductListIdsRelatedToCategoriesForTypeIndexedByProductId(
+            $uncachedProductIds,
+            SpyProductListTableMap::COL_TYPE_BLACKLIST,
+        );
+
+        foreach ($uncachedProductIds as $idProduct) {
+            static::$productWhitelistIdsCache[$idProduct] = array_values(array_unique(array_merge(
+                $whitelistDirect[$idProduct] ?? [],
+                $whitelistCategory[$idProduct] ?? [],
+            )));
+            static::$productBlackListIdsCache[$idProduct] = array_values(array_unique(array_merge(
+                $blacklistDirect[$idProduct] ?? [],
+                $blacklistCategory[$idProduct] ?? [],
+            )));
+        }
     }
 
     protected function mergeProductConcreteAndProductAbstractLists(

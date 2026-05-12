@@ -77,12 +77,32 @@ interface ProductListRepositoryInterface
     public function getProductConcreteProductListIdsForType(int $idProduct, string $listType): array;
 
     /**
+     * @param array<int> $productIds
+     * @param string $listType
+     *
+     * @return array<int, array<int>>
+     */
+    public function getProductConcreteProductListIdsForTypeIndexedByProductId(array $productIds, string $listType): array;
+
+    /**
      * @param int $idProduct
      * @param string $listType
      *
      * @return array<int>
      */
     public function getProductConcreteProductListIdsRelatedToCategoriesForType(int $idProduct, string $listType): array;
+
+    /**
+     * @module Category
+     * @module Product
+     * @module ProductCategory
+     *
+     * @param array<int> $productIds
+     * @param string $listType
+     *
+     * @return array<int, array<int>>
+     */
+    public function getProductConcreteProductListIdsRelatedToCategoriesForTypeIndexedByProductId(array $productIds, string $listType): array;
 
     /**
      * @module Product

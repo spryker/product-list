@@ -203,6 +203,33 @@ class ProductListRepository extends AbstractRepository implements ProductListRep
     }
 
     /**
+     * @param array<int> $productIds
+     * @param string $listType
+     *
+     * @return array<int, array<int>>
+     */
+    public function getProductConcreteProductListIdsForTypeIndexedByProductId(array $productIds, string $listType): array
+    {
+        $rows = $this->getFactory()
+            ->createProductListProductConcreteQuery()
+            ->filterByFkProduct_In($productIds)
+            ->useSpyProductListQuery(null, Criteria::LEFT_JOIN)
+                ->filterByType($listType)
+            ->endUse()
+            ->select([SpyProductListProductConcreteTableMap::COL_FK_PRODUCT, SpyProductListProductConcreteTableMap::COL_FK_PRODUCT_LIST])
+            ->distinct()
+            ->find()
+            ->toArray();
+
+        $result = [];
+        foreach ($rows as $row) {
+            $result[$row[SpyProductListProductConcreteTableMap::COL_FK_PRODUCT]][] = $row[SpyProductListProductConcreteTableMap::COL_FK_PRODUCT_LIST];
+        }
+
+        return $result;
+    }
+
+    /**
      * @module Product
      *
      * @param array<string> $productConcreteSkus
@@ -417,6 +444,46 @@ class ProductListRepository extends AbstractRepository implements ProductListRep
             ->select(SpyProductListTableMap::COL_ID_PRODUCT_LIST)
             ->find()
             ->toArray();
+    }
+
+    /**
+     * @module Category
+     * @module Product
+     * @module ProductCategory
+     *
+     * @param array<int> $productIds
+     * @param string $listType
+     *
+     * @return array<int, array<int>>
+     */
+    public function getProductConcreteProductListIdsRelatedToCategoriesForTypeIndexedByProductId(array $productIds, string $listType): array
+    {
+        $rows = $this->getFactory()
+            ->createProductListQuery()
+            ->filterByType($listType)
+            ->useSpyProductListCategoryQuery()
+                ->useSpyCategoryQuery()
+                    ->useSpyProductCategoryQuery()
+                        ->useSpyProductAbstractQuery()
+                            ->useSpyProductQuery()
+                                ->filterByIdProduct_In($productIds)
+                            ->endUse()
+                        ->endUse()
+                    ->endUse()
+                ->endUse()
+            ->endUse()
+            ->withColumn(SpyProductTableMap::COL_ID_PRODUCT, 'id_product')
+            ->select([SpyProductListTableMap::COL_ID_PRODUCT_LIST, 'id_product'])
+            ->distinct()
+            ->find()
+            ->toArray();
+
+        $result = [];
+        foreach ($rows as $row) {
+            $result[$row['id_product']][] = $row[SpyProductListTableMap::COL_ID_PRODUCT_LIST];
+        }
+
+        return $result;
     }
 
     /**

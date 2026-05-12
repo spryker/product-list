@@ -254,6 +254,21 @@ interface ProductListFacadeInterface
 
     /**
      * Specification:
+     * - Bulk-loads whitelist and blacklist IDs for all given product IDs using 4 queries total.
+     * - Populates the in-memory cache so that subsequent calls to
+     *   getProductWhitelistIdsByIdProduct() and getProductBlacklistIdsByIdProduct() are instant cache hits.
+     * - Already-cached product IDs are skipped.
+     *
+     * @api
+     *
+     * @param array<int> $productIds
+     *
+     * @return void
+     */
+    public function preloadProductListCacheByProductIds(array $productIds): void;
+
+    /**
+     * Specification:
      * - Finds a Product List by ProductListTransfer::idProductList in the transfer.
      * - Hydrate ProductListTransfer and relations to products and categories.
      *
